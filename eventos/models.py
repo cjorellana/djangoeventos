@@ -14,17 +14,29 @@ class Evento(models.Model):
     def __str__(self):
         return self.nombre
 
-class Persona(models.Model):
-    nombre = models.CharField(max_length=30)
-    apellido = models.CharField(max_length=30)
-
-    def __str__(self):
-        texto = "{0} {1}"
-        return texto.format(self.nombre,self.apellido)
-        
 class Pais(models.Model):
     nombre = models.CharField(max_length=50)
 
     def __str__(self):
         return self.nombre
+
+class Persona(models.Model):
+    nombre = models.CharField(max_length=30)
+    apellido = models.CharField(max_length=30)    
+    dpi = models.CharField(max_length=13)
+    nacimiento = models.DateField()
+    pais = models.ForeignKey(Pais,on_delete=models.PROTECT)
+
+    def __str__(self):
+        texto = "{0} {1}"
+        return texto.format(self.nombre,self.apellido)
+
     
+class Tipo_asignacion(models.Model):
+    nombre = models.CharField(max_length=100)
+
+class Catedratico(models.Model):
+    nombre = models.CharField(max_length=30)
+    apellido = models.CharField(max_length=30)
+
+
