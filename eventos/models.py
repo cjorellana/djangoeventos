@@ -7,7 +7,7 @@ class Evento(models.Model):
     inicio = models.DateField()
     fin = models.DateField()
     diploma = models.BooleanField(default=1)
-    foto = models.ImageField()
+    foto = models.ImageField(upload_to='images/',null=True)
     descripcion = models.TextField()
     activo = models.BooleanField(default=1)
 
@@ -24,8 +24,8 @@ class Persona(models.Model):
     nombre = models.CharField(max_length=30)
     apellido = models.CharField(max_length=30)    
     dpi = models.CharField(max_length=13)
-    nacimiento = models.DateField()
-    pais = models.ForeignKey(Pais,on_delete=models.PROTECT)
+    nacimiento = models.DateField(null=True)
+    pais = models.ForeignKey(Pais,on_delete=models.PROTECT, null=True, blank=True)
 
     def __str__(self):
         texto = "{0} {1}"
