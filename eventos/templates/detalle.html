@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+    {{ titulo }}
+{% endblock  %}
+
+{% block body %}
+
+<h1>{{ listado.nombre | title }}</h1>
+<p>Inicia: {{ listado.inicio }} </p>
+<p>Finaliza: {{ listado.fin }} </p>        
+<p>Inversión:  {{ listado.precio  }} </p>
+<p>Inversión:  {{ listado.descripcion | capfirst  }} </p>
+
+
+{% endblock  %}
+

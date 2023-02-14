@@ -1,27 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ titulo }}</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block titulo %}
+    {{ titulo }}
+{% endblock  %}
+
+
+
+{% block body %}
+
     <h1>{{ titulo }}</h1>
 
     {# se listara los eventos #}
 
     {% for x in listado %}
 
-        {% if x.foto %}
-            <img src="{{ x.foto.url }}" />
-        {% else %}
-            <p>No hay foto</p>
-        {% endif %}
+        <a href="detalle/{{ x.id }}">
+            {% if x.foto %}
+                <img src="{{ x.foto.url }}" />
+            {% else %}
+                <p>No hay foto</p>
+            {% endif %}
+        </a>
 
         <p>Nombre: {{ x.nombre }} </p>
         <p>Precio: {{ x.precio }} </p>
     {% endfor %}
-
-</body>
-</html>
+    
+{% endblock  %}
