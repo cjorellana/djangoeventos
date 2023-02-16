@@ -1,5 +1,4 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.shortcuts import render,get_object_or_404
 from .models import Evento,Persona,Pais
 
 
@@ -15,13 +14,17 @@ def index(request):
     } 
     
     return render(request,'index.html',data)
-    
+
+def custom_404(request, exception):
+    return render(request, '404.html', {})
+
 def about(request):
     return render(request,"about.html")
 
 def detalle(request,codigo):
 
-    eventos = Evento.objects.get(id=codigo)
+    #eventos = Evento.objects.get(id=codigo)
+    eventos = get_object_or_404(Evento,id=codigo)
 
     data = {
         'titulo': "Detalle",

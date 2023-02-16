@@ -1,14 +1,11 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block titulo %}
     {{ titulo }}
 {% endblock  %}
 
-
-
 {% block body %}
-
-    <h1>{{ titulo }}</h1>
 
     {# se listara los eventos #}
 
@@ -18,12 +15,15 @@
             {% if x.foto %}
                 <img src="{{ x.foto.url }}" />
             {% else %}
-                <p>No hay foto</p>
+                <img src="{% static 'img/ev1.jpg' %}" alt="Universidad Galileo" width="180" />             
             {% endif %}
         </a>
 
+        
         <p>Nombre: {{ x.nombre }} </p>
         <p>Precio: {{ x.precio }} </p>
     {% endfor %}
+
+    
     
 {% endblock  %}

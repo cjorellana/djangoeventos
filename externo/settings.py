@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-ju9*!^p)b7@^a-re)5&lowc6pisc+llj5nwyzpep#mwfd%m@c2
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost','127.0.0.1']
 
 
 # Application definition
@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'bootstrap5',
     'eventos',
 ]
 
@@ -121,6 +122,10 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 import os
+#STATICFILES_DIRS = [
+#    os.path.join(BASE_DIR, 'static')
+#]
+
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
