@@ -9,21 +9,31 @@
 
     {# se listara los eventos #}
 
+    
+    <div class="row">
+
     {% for x in listado %}
+    <div class="col-4">
+        <div class="card">
+            <a href="detalle/{{ x.id }}">
+                {% if x.foto %}
+                    <img src="{{ x.foto.url }}" class="card-img-top" />
+                {% else %}
+                    <img src="{% static 'img/ev1.jpg' %}" alt="Universidad Galileo" width="180" class="card-img-top" />             
+                {% endif %}
+            </a>
 
-        <a href="detalle/{{ x.id }}">
-            {% if x.foto %}
-                <img src="{{ x.foto.url }}" />
-            {% else %}
-                <img src="{% static 'img/ev1.jpg' %}" alt="Universidad Galileo" width="180" />             
-            {% endif %}
-        </a>
-
+            <div class="card-body">
+                <h5 class="card-title">{{ x.nombre }}</h5>
+            <p class="card-text">{{ x.descripcion }}</p>
+            <a href="#" class="btn btn-primary">Asignar</a>
+            </div>
+        </div>
         
-        <p>Nombre: {{ x.nombre }} </p>
-        <p>Precio: {{ x.precio }} </p>
+    </div>    
     {% endfor %}
 
+    </div>
     
     
 {% endblock  %}

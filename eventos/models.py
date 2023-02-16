@@ -7,7 +7,7 @@ class Evento(models.Model):
     inicio = models.DateField()
     fin = models.DateField()
     diploma = models.BooleanField(default=1)
-    foto = models.ImageField(upload_to='images/',null=True)
+    foto = models.ImageField(upload_to='images/', null=True,blank=True)
     descripcion = models.TextField()
     activo = models.BooleanField(default=1)
 
