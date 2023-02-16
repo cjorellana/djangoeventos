@@ -24,10 +24,24 @@
             </a>
 
             <div class="card-body">
-                <h5 class="card-title">{{ x.nombre }}</h5>
-            <p class="card-text">{{ x.descripcion }}</p>
-            <a href="#" class="btn btn-primary">Asignar</a>
+                <a href="detalle/{{ x.id }}" class="text-decoration-none text-black">
+                    <h5 class="card-title">{{ x.nombre | title }}</h5>
+                </a>
+
+                {% if x.diploma %}
+                    <span class="badge bg-warning">Incluye Diploma</span>
+                {% endif %}
+                
+                <div class="row">
+                    <div class="col">
+                        Q {{ x.precio }}
+                    </div>
+                    <div class="col col d-flex align-items-end flex-column">
+                        <a href="#" class="btn btn-primary">Asignar</a>
+                    </div>
+                </div>
             </div>
+            
         </div>
         
     </div>    
