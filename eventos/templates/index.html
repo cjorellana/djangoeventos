@@ -14,20 +14,39 @@
     <div class="row">
 
     {% for x in listado %}
-    <div class="col-4">
-        <div class="card">
+    <div class="col-6">
+        <div class="card mb-2">
             <a href="detalle/{{ x.id }}">
                 {% if x.foto %}
-                    <img src="{{ x.foto.url }}" class="card-img-top" />
+                    <img src="{{ x.foto.url }}" class="card-img-top" height="300" />
                 {% else %}
-                    <img src="{% static 'img/ev1.jpg' %}" alt="Universidad Galileo" width="180" class="card-img-top" />             
+                    <img src="{% static 'img/ev1.jpg' %}" alt="Universidad Galileo" height="300" width="180" class="card-img-top" />
                 {% endif %}
             </a>
 
             <div class="card-body">
-                <a href="detalle/{{ x.id }}" class="text-decoration-none text-black">
-                    <h5 class="card-title">{{ x.nombre | title }}</h5>
-                </a>
+               <h3 class="card-title text-center text-uppercase text-black">
+                    <a href="detalle/{{ x.id }}" class="text-decoration-none text-black fw-light">{{ x.nombre }}</a>
+                </h3>
+
+                <div class="row mb-2">
+                    <div class="col d-flex align-items-start flex-row align-self-center">
+                        <span class="mr-2 fs-6 fw-light text-muted">inicia:&nbsp;</span>
+                        <strong class="fs-6 text-muted">{{ x.inicio | date:"d/m/y" }}</strong>
+                    </div>
+                <div class="col d-flex align-items-end flex-row justify-content-end">
+                    <span class="mr-2 fs-6 fw-light text-muted">finaliza:&nbsp;</span>
+                    <strong class="fs-6 text-muted">{{ x.fin | date:"d/m/y" }}</strong>
+                    </div>
+                </div>
+
+                <div class="row mb-2">
+                    <div class="col align-self-center">
+                       <span class="mr-2 fs-6 fw-light text-muted">Último día para asignarse:&nbsp;</span>
+                        <strong class="fs-6 text-muted">{{ x.ultimo | date:"l" }} {{ x.ultimo }}</strong>
+                    </div>
+                </div>
+
 
                 {% if x.diploma %}
                     <span class="badge bg-warning">Incluye Diploma</span>
@@ -41,11 +60,12 @@
                         <a href="#" class="btn btn-link text-decoration-none">{% bs_icon 'cart-plus-fill' %} Agregar al Carrito</a>
                     </div>
                 </div>
-            </div>
+            </div>{# fin de card bode #}
             
-        </div>
+        </div> {# fin de card #}
         
-    </div>    
+    </div>
+
     {% endfor %}
 
     </div>
