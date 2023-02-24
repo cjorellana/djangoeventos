@@ -1,12 +1,15 @@
 from django.shortcuts import render,get_object_or_404
 from .models import Evento,Persona,Pais
-
+from datetime import datetime
 
 # Create your views here.
 
 def index(request):
 
-    eventos = Evento.objects.all()
+    fecha_actual= datetime.now()
+    eventos = Evento.objects.filter(fin__gte=fecha_actual)
+    #eventos = Evento.objects.all()
+
 
     data = {
         'titulo': "Eventos",

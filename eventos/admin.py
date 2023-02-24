@@ -9,6 +9,7 @@ class EventoAdmin(admin.ModelAdmin):
     #list_editable = ["precio"]
     search_fields = ["nombre"]
     list_filter = ["activo","diploma","inicio"]
+    exclude = ["created_by", "created_at"]
 
 
 admin.site.register(Evento,EventoAdmin)
