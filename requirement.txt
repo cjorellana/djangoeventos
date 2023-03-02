@@ -6,3 +6,5 @@ tzdata
 django-admin-interface
 django-bootstrap-v5
 django-bootstrap-icons
+django-crispy-forms
+crispy-bootstrap5

@@ -41,12 +41,13 @@ def contacto(request):
         'form': ContactoForm()
     }
 
-    if request.method =='POST':
+    if request.method == 'POST':
         formulario = ContactoForm(data=request.POST)
         if formulario.is_valid():
             formulario.save()
-            data["mensaje"] ="Soporte Ingresado, Pronto nos comunicaremos"
+            data["mensaje"] = "Soporte Ingresado, Pronto nos comunicaremos"
         else:
             data["form"] = formulario
+
 
     return render(request, "contacto.html",data)
