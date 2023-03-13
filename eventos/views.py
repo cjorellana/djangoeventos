@@ -1,7 +1,7 @@
 from django.shortcuts import render,get_object_or_404
 from .models import Evento,Persona,Pais
 from datetime import datetime
-from .forms import ContactoForm
+from .forms import ContactoForm,CustomUserCreationForm
 
 # Create your views here.
 
@@ -35,6 +35,12 @@ def detalle(request,codigo):
         'listado': eventos       
     } 
     return render(request,"detalle.html",data)
+
+def registro(request):
+    data ={
+        'form': CustomUserCreationForm
+    }
+    return render(request,'usuarios/registro.html',data)
 
 def contacto(request):
     data = {

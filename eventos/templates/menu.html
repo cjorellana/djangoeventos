@@ -12,11 +12,27 @@
                     <h1 class="title hidden-sm hidden-xs" style="font-weight:200">
                     <span class="text-center text-muted " style="margin-right: 10px; color: #009798">|</span> 
                     Eventos Galileo                    
-                    
+                    </h1>
             </div>
             <div class="col">
-                <button type="button" class="btn btn-primary">Facebook</button>
-                <button type="button" class="btn btn-success">Gmail</button>
+
+                {% if user.is_authenticated %}
+
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" 
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        {{ user.username }}
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Perfil</a></li>
+                            <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+                        
+                        </ul>
+                    </div>
+                {% else %}
+                    <a href="{% url 'login' %}" class="btn btn-secondary">Ingresar</a>
+                {% endif %}
+
             </div>
 
       </div>

@@ -1,5 +1,10 @@
 from django import forms
+from django.contrib.auth.forms import UserCreationForm
 from .models import Contacto
+
+
+class CustomUserCreationForm(UserCreationForm):
+    pass
 
 class ContactoForm(forms.ModelForm):
     """
