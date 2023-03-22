@@ -1,7 +1,8 @@
-from django.shortcuts import render,get_object_or_404
+from django.shortcuts import render,get_object_or_404, redirect
 from .models import Evento,Persona,Pais
 from datetime import datetime
 from .forms import ContactoForm,CustomUserCreationForm
+from django.contrib.auth import authenticate,login
 
 # Create your views here.
 
@@ -40,6 +41,21 @@ def registro(request):
     data ={
         'form': CustomUserCreationForm
     }
+
+    if request.method == 'POST':
+        formulario = CustomUserCreationForm(data=request.POST)
+        if formulario.is_valid():
+            formulario.save()
+            user = authenticate(
+                username=formulario.cleaned_data["username"],
+                password=formulario.cleaned_data["password1"]
+            )
+            login(request, user)
+            return redirect(to="index")
+
+        data["form"] = formulario
+
+
     return render(request,'usuarios/registro.html',data)
 
 def contacto(request):
