@@ -3,6 +3,7 @@ from .models import Evento,Persona,Pais
 from datetime import datetime
 from .forms import ContactoForm,CustomUserCreationForm
 from django.contrib.auth import authenticate,login
+from django.contrib.auth.views import LoginView
 # Create your views here.
 
 def index(request):
@@ -35,6 +36,13 @@ def detalle(request,codigo):
         'listado': eventos       
     } 
     return render(request,"detalle.html",data)
+
+class CustomLoginView(LoginView):
+    def get(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            return redirect('index')
+        else:
+            return super().get(request, *args, **kwargs)
 
 def registro(request):
 

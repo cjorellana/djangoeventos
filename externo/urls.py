@@ -5,7 +5,7 @@ from django.conf.urls.static import static
 from django.contrib.auth.views import LoginView,LogoutView
 from eventos import views
 
-from eventos.forms import CustomLoginView
+from eventos.views import CustomLoginView
 
 urlpatterns = [
     path('admin/', admin.site.urls),

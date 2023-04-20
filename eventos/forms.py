@@ -3,7 +3,6 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.models import User
 from .models import Contacto
-from django.shortcuts import redirect
 
 class CustomUserCreationForm(UserCreationForm):
     first_name = forms.CharField(
@@ -26,12 +25,7 @@ class CustomUserCreationForm(UserCreationForm):
         
         return Email
 
-class CustomLoginView(LoginView):
-    def get(self, request, *args, **kwargs):
-        if request.user.is_authenticated:
-            return redirect('index')
-        else:
-            return super().get(request, *args, **kwargs)
+
 
 
 class ContactoForm(forms.ModelForm):
