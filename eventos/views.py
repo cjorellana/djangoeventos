@@ -3,7 +3,6 @@ from .models import Evento,Persona,Pais
 from datetime import datetime
 from .forms import ContactoForm,CustomUserCreationForm
 from django.contrib.auth import authenticate,login
-
 # Create your views here.
 
 def index(request):
@@ -38,6 +37,10 @@ def detalle(request,codigo):
     return render(request,"detalle.html",data)
 
 def registro(request):
+
+    if request.user.is_authenticated:
+        return redirect('index')
+
     data ={
         'form': CustomUserCreationForm
     }
