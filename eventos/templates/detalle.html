@@ -6,19 +6,19 @@
   <div class="col p-4 d-flex flex-column position-static">
     <h3 class="card-title text-center text-uppercase text-black">
       <a
-        href="detalle/{{ listado.id }}"
+        href="detalle/{{ evento.id }}"
         class="text-decoration-none text-black fw-light"
-        >{{ listado.nombre }}</a
+        >{{ evento.nombre }}</a
       >
     </h3>
     <div class="row mb-2">
       <div class="col d-flex align-items-start flex-row align-self-center">
         <span class="mr-2 fs-6 fw-light text-muted">inicia:&nbsp;</span>
-        <strong class="fs-6 text-muted"> {{ listado.inicio | date:"d/m/y" }} </strong>
+        <strong class="fs-6 text-muted"> {{ evento.inicio | date:"d/m/y" }} </strong>
       </div>
       <div class="col d-flex align-items-end flex-row justify-content-end">
         <span class="mr-2 fs-6 fw-light text-muted">finaliza:&nbsp;</span
-        ><strong class="fs-6 text-muted">{{ listado.fin | date:"d/m/y" }}</strong>
+        ><strong class="fs-6 text-muted">{{ evento.fin | date:"d/m/y" }}</strong>
       </div>
     </div>
     <div class="row mb-2">
@@ -26,11 +26,11 @@
         <span class="mr-2 fs-6 fw-light text-muted"
           >Último día para asignarse:&nbsp;</span
         ><strong class="fs-6 text-muted"
-          >{{ listado.ultimo | date:"l" }} {{ listado.ultimo }}</strong
+          >{{ evento.ultimo | date:"l" }} {{ listado.ultimo }}</strong
         >
       </div>
     </div>
-    {% if listado.diploma %}
+    {% if evento.diploma %}
     <div class="row">
       <div class="col d-flex align-items-start flex-column align-self-center">
         <h6>
@@ -45,22 +45,22 @@
       <div class="col d-flex align-items-start flex-column align-self-center">
         <h4>
           <span class="badge bg-warning text-white"
-            >{% bs_icon 'credit-card-2-back-fill' %} Q.{{ listado.precio }}</span
+            >{% bs_icon 'credit-card-2-back-fill' %} Q.{{ evento.precio }}</span
           >
         </h4>
       </div>
       <div class="col d-flex align-items-end flex-column">
-        <a href="detalle/{{ listado.id }}" class="btn btn-link text-decoration-none"
+        <a href="detalle/{{ evento.id }}" class="btn btn-link text-decoration-none"
           >{% bs_icon 'cart-plus-fill' %} Agregar al carrito</a
         >
       </div>
     </div>
   </div>
   <div class="col-auto d-none d-lg-block">
-    {% if listado.foto %}
+    {% if evento.foto %}
     <a href="">
       <img
-        src="{{listado.foto.url}}"
+        src="{{evento.foto.url}}"
         alt=""
         height="300"
         class="card-img-top"
